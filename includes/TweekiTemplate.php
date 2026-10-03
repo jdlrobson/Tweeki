@@ -33,6 +33,18 @@ use MediaWiki\Title\Title;
  */
 class TweekiTemplate extends BaseTemplate {
 
+	public function getPersonalTools() {
+		$cNav = $this->get( 'content_navigation' );
+		$personalTools = array_merge(
+			$cNav['user-interface-preferences'],
+			$cNav['user-page'],
+			$cNav['notifications'],
+			$cNav['user-menu']
+		);
+
+		return $this->getSkin()->getPersonalToolsForMakeListItem( $personalTools );
+	}
+
 	/* Functions */
 
 	/**
